@@ -17,16 +17,17 @@
 
 # Assumptions
 # -----------------------------------------------------------------------------
-# data has been already downloaded. 
+# - data has been already downloaded. 
+# - source and data are in the same folder.
+# - data is located under 
+#   - ./test    : location of test data
+#   - ./train   : location of train data
 
 # Data assembly section
 # -----------------------------------------------------------------------------
 # Script assumes data is in the same folder as the source
 # -----------------------------------------------------------------------------
 
-# data is located under 
-# - ./test    : location of test data
-# - ./train   : location of train data
 
 library(dplyr)
 
