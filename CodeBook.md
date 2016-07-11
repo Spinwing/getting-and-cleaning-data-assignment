@@ -100,7 +100,7 @@ fBodyBodyGyroJerkMagMean       | .
 fBodyBodyGyroJerkMagStd        | .
 fBodyBodyGyroJerkMagMeanFreq   | .
 
-# Activity Labels
+## Activity Labels
 Code | Activity name
 ---- | -------------
 1 | WALKING
