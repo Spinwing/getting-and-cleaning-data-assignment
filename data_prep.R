@@ -131,8 +131,11 @@ tidy_set <- complete_data %>% group_by(activity, subject) %>%
 
 # writes off as CSV
 print("writing data set...")
+write.table(tidy_set, file = "../data/tidy_data_set.txt", 
+            row.names = FALSE, quote=FALSE)
+
+# optional also saves in CSV, it read better in github and in Excel
 write.table(tidy_set, file = "../data/tidy_data_set.csv", 
-            sep=",", 
-            row.names = FALSE)
+            row.names = FALSE, sep=",")
 
 print("done!")
