@@ -30,6 +30,7 @@
 
 
 library(dplyr)
+library(reshape2)
 
 # wrapper around gsub, so that we can use dplyr chaining which is way readable
 mygsub <- function(x, pattern, replace) {
@@ -122,6 +123,12 @@ complete_data$activity <- factor(complete_data$activity,
 print("creating new tidy data set")
 tidy_set <- complete_data %>% group_by(activity, subject) %>% 
     summarize_each(funs(mean)) 
+
+# now melts the result so that each variable is not horizontal anymore but 
+# vertical
+tidy_set <- melt(tidy_set)
+# and converts to factors the variable names
+tidy_set$variable <- as.factor(tidy_set$variable)
 
 # writes off as CSV
 print("writing data set...")

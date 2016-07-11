@@ -22,6 +22,7 @@ The script run_analysis.R performs the following operations:
 * Appropriately labels the data set with descriptive variable names.
 * Creates a second, independent tidy data set with the average of each variable
 for each activity and each subject.
+* melts the dataset so that the result is correctly tidy.
 
 The script assumes source and data are in the same folder. Also test and train 
 data are in their respective folders, respecting the original structure in 
