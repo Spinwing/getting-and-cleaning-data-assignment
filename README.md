@@ -17,9 +17,8 @@ The script run_analysis.R performs the following operations:
 
 * Preloads the descriptions to be later used in the script
 * Tidy the labels so that are more readable
+* Loads the datasets. While loading, only loads the columns we are interested.
 * Merges the training and the test sets to create one data set.
-* Extracts only the measurements on the mean and standard deviation for each 
-measurement.
 * Appropriately labels the data set with descriptive variable names.
 * Creates a second, independent tidy data set with the average of each variable
 for each activity and each subject.
