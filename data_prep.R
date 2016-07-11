@@ -14,26 +14,18 @@
 # 5) From the data set in step 4, creates a second, independent tidy data set 
 # with the average of each variable for each activity and each subject.
 
-# ASSUMPTIONS
+# Assumptions
 # -----------------------------------------------------------------------------
 # data has been already downloaded. 
-# working folder structure is
-# - root
-# \--- source                       : source folder
-# \--- data                         : data main folder
-#      \--- train                   : training data folder
-#           \--- Inertial Signals
-#      \--- test                    : test data folder
-#           \--- Inertial Signals
+
 # Data assembly section
 # -----------------------------------------------------------------------------
-# SCRIPT ASSUMES YOU ARE IN THE SOURCE DIRECTORY WHEN YOU EXECUTE IT
+# Script assumes data is in the same folder as the source
 # -----------------------------------------------------------------------------
 
 # data is located under 
-# - ../data         : location of description files
-# - ../data/test    : location of test data
-# - ../data/train   : location of train data
+# - ./test    : location of test data
+# - ./train   : location of train data
 
 library(dplyr)
 
@@ -44,7 +36,7 @@ mygsub <- function(x, pattern, replace) {
 
 print("loading features...")
 # load all features
-features <- read.table("../data/features.txt", colClasses = "character")
+features <- read.table("features.txt", colClasses = "character")
 # selects only the features which end either in -mean() or -std()
 # we store the number of the selected colmuns for later use
 features_cols <- grep(".-mean.*|.-std.*", features[,2])
@@ -64,7 +56,7 @@ features_names <- features_names %>% mygsub("-mean", "Mean") %>%
 # - features_names  : contains the tidy text of the colums we want
 
 # reads the activity labels. 
-activity_labels <- read.table("../data/activity_labels.txt", 
+activity_labels <- read.table("activity_labels.txt", 
                               colClasses = "character")
 
 # DATA loading section
@@ -84,9 +76,9 @@ activity_labels <- read.table("../data/activity_labels.txt",
 print("loading data...")
 # TEST data
 # load the files
-test_subject <- read.table("../data/test/subject_test.txt")
-test_x <- read.table("../data/test/X_test.txt")[features_cols]
-test_y <- read.table("../data/test/y_test.txt")
+test_subject <- read.table("./test/subject_test.txt")
+test_x <- read.table("./test/X_test.txt")[features_cols]
+test_y <- read.table("./test/y_test.txt")
 
 # joins the TEST tables
 test_data <- cbind(test_subject, test_y, test_x)
@@ -94,9 +86,9 @@ test_data <- cbind(test_subject, test_y, test_x)
 
 # TRAIN data
 # load the files
-train_subject <- read.table("../data/train/subject_train.txt")
-train_x <- read.table("../data/train/X_train.txt")[features_cols]
-train_y <- read.table("../data/train/y_train.txt")
+train_subject <- read.table("./train/subject_train.txt")
+train_x <- read.table("./train/X_train.txt")[features_cols]
+train_y <- read.table("./train/y_train.txt")
 
 # joins the TRAIN tables
 train_data <- cbind(train_subject, train_y, train_x)
@@ -131,11 +123,11 @@ tidy_set <- complete_data %>% group_by(activity, subject) %>%
 
 # writes off as CSV
 print("writing data set...")
-write.table(tidy_set, file = "../data/tidy_data_set.txt", 
+write.table(tidy_set, file = "tidy_data_set.txt", 
             row.names = FALSE, quote=FALSE)
 
 # optional also saves in CSV, it read better in github and in Excel
-write.table(tidy_set, file = "../data/tidy_data_set.csv", 
+write.table(tidy_set, file = "tidy_data_set.csv", 
             row.names = FALSE, sep=",")
 
 print("done!")
