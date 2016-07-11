@@ -7,9 +7,10 @@ output: html_document
 
 # Code Book
 
-## tidy_data_set.csv 
+## tidy_data_set.txt 
 
-The tidy_data_set.csv contains the result of the assignment in form of a csv file.
+The tidy_data_set.txt contains the result of the assignment. For easier
+reading in github and Excel, a csv file is also provided in the repository.
 
 ### dataset structure
 Except when noted, all variables are numeric. Values correspond to the mean
