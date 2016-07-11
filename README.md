@@ -1,7 +1,6 @@
 # Getting and Cleaning Data Course, Peer Graded Assignment
 # README
 
-## Synopsis
 One of the most exciting areas in all of data science right now is wearable 
 computing. Companies like Fitbit, Nike, and Jawbone Up are racing to develop 
 the most advanced algorithms to attract new users. The data represent data 
@@ -23,3 +22,7 @@ measurement.
 * Appropriately labels the data set with descriptive variable names.
 * From the data set in step 4, creates a second, independent tidy data set with 
 the average of each variable for each activity and each subject.
+
+The script assumes source and data are in the same folder. Also test and train 
+data are in their respective folders, respecting the original structure in 
+the original zip file.
