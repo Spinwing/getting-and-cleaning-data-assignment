@@ -130,13 +130,20 @@ tidy_set <- melt(tidy_set)
 # and converts to factors the variable names
 tidy_set$variable <- as.factor(tidy_set$variable)
 
-# writes off as CSV
-print("writing data set...")
+# writes off as txt
+print("writing tidy data set...")
 write.table(tidy_set, file = "tidy_data_set.txt", 
             row.names = FALSE, quote=FALSE)
 
-# optional also saves in CSV, it read better in github and in Excel
-write.table(tidy_set, file = "tidy_data_set.csv", 
-            row.names = FALSE, sep=",")
+# runs the summaries  with the average of each variable for each activity 
+# and each subject.
+summarised_set <- tidy_set %>% 
+    group_by(activity, subject, variable) %>% 
+    summarise(mean=mean(value))
+
+# writes off as txt
+print("writing summarised data set...")
+write.table(summarised_set, file = "summarised_data_set.txt", 
+            row.names = FALSE, quote=FALSE)
 
 print("done!")
