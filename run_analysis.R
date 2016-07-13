@@ -121,29 +121,25 @@ complete_data$activity <- factor(complete_data$activity,
 # last step is to create a second tidy dataset with the average of each variable
 # for each activity and subject
 print("creating new tidy data set")
-tidy_set <- complete_data %>% group_by(activity, subject) %>% 
-    summarize_each(funs(mean)) 
+#tidy_set <- complete_data %>% group_by(activity, subject) %>% 
+#    summarize_each(funs(mean)) 
+
+tidy_set <- complete_data %>% 
+    group_by(activity, subject) %>% 
+    summarize_each(funs(mean)) %>% 
+    melt() %>% 
+    select(variable, activity, subject, value) %>%
+    rename(mean=value)
 
 # now melts the result so that each variable is not horizontal anymore but 
 # vertical
-tidy_set <- melt(tidy_set)
+#tidy_set <- melt(tidy_set)
 # and converts to factors the variable names
 tidy_set$variable <- as.factor(tidy_set$variable)
 
 # writes off as txt
 print("writing tidy data set...")
 write.table(tidy_set, file = "tidy_data_set.txt", 
-            row.names = FALSE, quote=FALSE)
-
-# runs the summaries  with the average of each variable for each activity 
-# and each subject.
-summarised_set <- tidy_set %>% 
-    group_by(activity, subject, variable) %>% 
-    summarise(mean=mean(value))
-
-# writes off as txt
-print("writing summarised data set...")
-write.table(summarised_set, file = "summarised_data_set.txt", 
             row.names = FALSE, quote=FALSE)
 
 print("done!")
