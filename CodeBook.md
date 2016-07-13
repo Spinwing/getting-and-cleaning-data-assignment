@@ -9,8 +9,7 @@ output: html_document
 
 ## tidy_data_set.txt 
 
-The tidy_data_set.txt contains the result of the assignment. For easier
-reading in github and Excel, a csv file is also provided in the repository.
+The tidy_data_set.txt contains the result of the assignment. 
 
 
 
@@ -18,8 +17,14 @@ reading in github and Excel, a csv file is also provided in the repository.
 Except when noted, all variables are numeric. Values correspond to the mean
 of the obsevations in the original dataset.
 
-"Acc" variables are expressed in estimated body accelleration
-"Gyro" variables are expressed in velocity from the gyroscope
+### Variable Legenda
+* "Acc": Accelleration
+* "Gyro": Gyroscope
+* "Std": Standard Deviation
+
+### Units
+* "Acc" variables are expressed in estimated body accelleration (G)
+* "Gyro" variables are expressed in angular velocity from the gyroscope
 
 Variable | Notes
 -------- | ----------------------------------------
